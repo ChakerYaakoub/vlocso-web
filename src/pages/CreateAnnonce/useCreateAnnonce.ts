@@ -3,7 +3,7 @@ import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { handleCreateAnnonce } from "./handleCreateAnnonce";
-import { CreateAnnonce, FormValuesCreateAnnonce } from "../../models/Annonce";
+import { FormValuesCreateAnnonce } from "../../models/Annonce";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../reducers/userReducer";

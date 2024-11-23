@@ -1,4 +1,3 @@
-import { Conversation } from "./Conversation";
 import { Image } from "./Image";
 
 export interface Annonce {

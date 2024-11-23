@@ -1,5 +1,4 @@
 import { FormValues } from "./useRegister";
-import { LoginRegister } from "../../models/responses/LoginRegister";
 import { registerUser } from "../../reducers/userReducer"; // Import the registerUser action
 import { AppDispatch } from "../../store/store"; // Import your AppDispatch type if you have it
 

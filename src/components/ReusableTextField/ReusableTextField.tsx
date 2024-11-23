@@ -1,14 +1,14 @@
-import React from 'react';
-import './ReusableTextField.css';
+import React from "react";
+import "./ReusableTextField.css";
 import {
   ReusableTextFieldProps,
   useReusableTextField,
-} from './useReusableTextField';
+} from "./useReusableTextField";
 import {
   TextField as MuiTextField,
   FormHelperText,
   InputAdornment,
-} from '@mui/material';
+} from "@mui/material";
 
 const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
   const {
@@ -26,31 +26,30 @@ const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
     min = 0,
     // defaultValue = '',
     disabled = false,
-    helperText = '',
+    helperText = "",
     // afterFocus = '',
-    id = '',
-    label = 'label',
+    id = "",
+    label = "label",
     readOnly = false,
     required = false,
     multiline = false,
     htmlBefore = undefined,
     rows,
     maxRows,
-    type = 'text',
-    name = '',
+    type = "text",
+    name = "",
     error = false,
     positionIcon1,
     positionIcon2,
     icon1,
     icon2,
     onClickIcon2,
-    ariaDescribedBy = '',
-    ariaDescribedById = '',
-    title = '',
-    placeholder = '',
-    color = 'primary',
-    size = 'medium',
-    margin = 'normal',
+    ariaDescribedBy = "",
+    ariaDescribedById = "",
+    placeholder = "",
+    color = "primary",
+    size = "medium",
+    margin = "normal",
     fullWidth = true,
     sx = {},
     itsVeryRequired = false,
@@ -89,17 +88,26 @@ const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
       )}
 
       <MuiTextField
-
         value={value}
         id={id}
         name={name}
-        label={<> {label} {required ? <span
-          aria-hidden="true"
-          className="MuiFormLabel-asterisk MuiInputLabel-asterisk css-wgai2y-MuiFormLabel-asterisk pl-0"
-          style={{ color: 'red' }}
-        >
-          *
-        </span> : <> </>} </>}
+        label={
+          <>
+            {" "}
+            {label}{" "}
+            {required ? (
+              <span
+                aria-hidden="true"
+                className="MuiFormLabel-asterisk MuiInputLabel-asterisk css-wgai2y-MuiFormLabel-asterisk pl-0"
+                style={{ color: "red" }}
+              >
+                *
+              </span>
+            ) : (
+              <> </>
+            )}{" "}
+          </>
+        }
         autoComplete={`current-${name}`}
         variant="filled"
         error={error}
@@ -107,7 +115,7 @@ const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
         disabled={disabled}
         // defaultValue={defaultValue}
         type={type}
-        sx={{ ...CssTextField, ...sx, marginBottom: '0px' }}
+        sx={{ ...CssTextField, ...sx, marginBottom: "0px" }}
         onFocus={() => {
           // if (error) {
           //   setMyText(errorText);
@@ -132,22 +140,22 @@ const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
           },
           readOnly,
           startAdornment:
-            positionIcon1 === 'start' ? (
+            positionIcon1 === "start" ? (
               <InputAdornment
                 sx={{
-                  color: error ? '#d32f2f' : focused ? '#1976d2' : 'inherit',
-                  cursor: 'pointer',
+                  color: error ? "#d32f2f" : focused ? "#1976d2" : "inherit",
+                  cursor: "pointer",
                 }}
                 onClick={onClickIcon}
                 position="start"
               >
                 {icon1}
               </InputAdornment>
-            ) : positionIcon2 === 'start' ? (
+            ) : positionIcon2 === "start" ? (
               <InputAdornment
                 sx={{
-                  color: error ? '#d32f2f' : focused ? '#1976d2' : 'inherit',
-                  cursor: 'pointer',
+                  color: error ? "#d32f2f" : focused ? "#1976d2" : "inherit",
+                  cursor: "pointer",
                 }}
                 onClick={onClickIcon}
                 position="start"
@@ -156,22 +164,22 @@ const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
               </InputAdornment>
             ) : undefined,
           endAdornment:
-            positionIcon1 === 'end' ? (
+            positionIcon1 === "end" ? (
               <InputAdornment
                 sx={{
-                  color: error ? '#d32f2f' : focused ? '#1976d2' : 'inherit',
-                  cursor: 'pointer',
+                  color: error ? "#d32f2f" : focused ? "#1976d2" : "inherit",
+                  cursor: "pointer",
                 }}
                 position="end"
                 onClick={onClickIcon2}
               >
                 {icon1}
               </InputAdornment>
-            ) : positionIcon2 === 'end' ? (
+            ) : positionIcon2 === "end" ? (
               <InputAdornment
                 sx={{
-                  color: error ? '#d32f2f' : focused ? '#1976d2' : 'inherit',
-                  cursor: 'pointer',
+                  color: error ? "#d32f2f" : focused ? "#1976d2" : "inherit",
+                  cursor: "pointer",
                 }}
                 position="end"
                 onClick={onClickIcon2}
@@ -194,7 +202,7 @@ const ReusableTextField: React.FC<ReusableTextFieldProps> = (props) => {
       {helperText && (
         <FormHelperText
           sx={{
-            color: error ? '#d32f2f' : focused ? '#1976d2' : 'inherit',
+            color: error ? "#d32f2f" : focused ? "#1976d2" : "inherit",
 
             height: `${heightFormHelperText}rem`,
           }}

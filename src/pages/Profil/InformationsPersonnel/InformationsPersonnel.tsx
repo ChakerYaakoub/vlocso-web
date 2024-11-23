@@ -17,6 +17,7 @@ import CustomButton from "../../../components/CustomButton/CustomButton";
 
 const InformationsPersonnel: React.FC<InformationsPersonnelProps> = (props) => {
   const {
+    //@ts-ignore
     user,
     formik,
     loading,

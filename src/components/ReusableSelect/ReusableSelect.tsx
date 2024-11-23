@@ -1,15 +1,6 @@
 import React from "react";
 import { ReusableSelectProps, useReusableSelect } from "./useReusableSelect";
-import {
-  FormHelperText,
-  InputAdornment,
-  InputLabel,
-  ListItemIcon,
-  ListItemText,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { FormHelperText, MenuItem, Select } from "@mui/material";
 // import { FaCaretDown, FaChevronDown } from 'react-icons/fa6';
 import "./ReusableSelect.css";
 
@@ -36,7 +27,6 @@ const ReusableSelect: React.FC<ReusableSelectProps> = (props) => {
     type = "text",
     name = "",
     error = false,
-    title,
     color = "primary",
     size = "medium",
     fullWidth = true,

@@ -28,11 +28,13 @@ const DefaultAutoComplete: React.FC<DefaultAutoCompleteProps> = (props) => {
     positionIcon2,
     icon2,
     id = "",
+    //@ts-ignore
     title = "",
     label = "label",
     readOnly = false,
     required = false,
     itsVeryRequired = false,
+    //@ts-ignore
     htmlBefore = undefined,
     name = "",
     error = false,
@@ -42,6 +44,7 @@ const DefaultAutoComplete: React.FC<DefaultAutoCompleteProps> = (props) => {
     ariaDescribedById = "",
     fullWidth = true,
     sx = {},
+    //@ts-ignore
     blurOnSelect = false,
     className = "",
     placeholder,
@@ -103,7 +106,9 @@ const DefaultAutoComplete: React.FC<DefaultAutoCompleteProps> = (props) => {
       <Autocomplete
         disablePortal
         loading={loading}
+        //@ts-ignore
         options={options}
+        //@ts-ignore
         getOptionDisabled={(option) => OptionDisabled.includes(option)}
         value={getValidValue(value)}
         isOptionEqualToValue={isOptionEqualToValue}

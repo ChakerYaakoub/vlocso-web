@@ -16,6 +16,7 @@ interface UploadMultipleImagesProps {
 }
 
 const UploadMultipleImages: React.FC<UploadMultipleImagesProps> = ({
+  // @ts-ignore
   name,
   maxFileSize,
   acceptedFormats = ["image/jpeg", "image/png", "image/gif"],

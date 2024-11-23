@@ -2,7 +2,7 @@ import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { textsInputsLogin } from "./textsInputsLogin";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { handleLogin } from "./handleLogin";
 import { useDispatch } from "react-redux";
 

@@ -1,8 +1,6 @@
 import { FormValues } from "./useLogin";
-import { API_ENDPOINTS } from "../../https"; // Import the endpoints
 import { AppDispatch } from "../../store/store";
 import { loginUser } from "../../reducers/userReducer";
-import { LoginRegister } from "../../models/responses/LoginRegister";
 
 export const handleLogin = async (dispatch: AppDispatch, value: FormValues) => {
   try {

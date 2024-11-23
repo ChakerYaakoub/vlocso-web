@@ -3,13 +3,13 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  useLocation,
+  // useLocation,
 } from "react-router-dom";
 import appRoutes from "./Routes/appRoutes";
 import { Header } from "./components";
 import Footer from "./components/Footer/Footer";
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "./reducers/userReducer";
+// import { useSelector } from "react-redux";
+// import { selectIsLoggedIn } from "./reducers/userReducer";
 import PrivateRoute from "./Routes/PrivateRoute";
 import { useEffect, useState } from "react";
 

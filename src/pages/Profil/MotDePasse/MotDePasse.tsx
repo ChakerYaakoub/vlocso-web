@@ -9,6 +9,7 @@ import CustomButton from "../../../components/CustomButton/CustomButton";
 
 const MotDePasse: React.FC<MotDePasseProps> = (props) => {
   const {
+    //@ts-ignore
     user,
     formik,
     errorChangePasswordMsg,

@@ -16,6 +16,7 @@ export const useCropImage = (props: CropImageProps) => {
   const [loadingGetCroppedImg, setLoadingGetCroppedImg] = useState(false);
 
   const onCropComplete = useCallback(
+    // @ts-ignore
     (croppedArea: any, croppedAreaPixels: any) => {
       setCroppedAreaPixels(croppedAreaPixels);
     },

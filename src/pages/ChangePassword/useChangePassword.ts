@@ -57,6 +57,7 @@ export const useChangePassword = (props: ChangePasswordProps) => {
     validationSchema,
     validateOnChange: true,
     validateOnBlur: true,
+    //@ts-ignore
     onSubmit: async (values) => {
       // This will be handled in the useEffect
     },

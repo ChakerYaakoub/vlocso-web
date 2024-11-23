@@ -6,10 +6,8 @@ import ReusableTextField from "../../components/ReusableTextField/ReusableTextFi
 import CustomButton from "../../components/CustomButton/CustomButton";
 import {
   MdTitle,
-  MdAttachMoney,
   MdCategory,
   MdLocationOn,
-  MdDescription,
   MdOutlineProductionQuantityLimits,
   MdOutlineWhatshot,
 } from "react-icons/md";
@@ -17,8 +15,7 @@ import { IoMdArrowRoundBack } from "react-icons/io";
 import CardHeader from "../../components/CardHeader/CardHeader";
 import { IoPricetag } from "react-icons/io5";
 import { BiTransfer } from "react-icons/bi";
-import { VscDebugBreakpointConditional } from "react-icons/vsc";
-import { FaEuroSign, FaLandmark, FaTachometerAlt } from "react-icons/fa";
+import { FaEuroSign, FaTachometerAlt } from "react-icons/fa";
 import {
   BsBookmarkStar,
   BsCalendar2Date,
@@ -37,7 +34,6 @@ import {
   typeVehiculeItems,
 } from "../../utils/createAnnonceArrays";
 import { Option } from "../../models/Inputs/FormType";
-import { carBrandsAndModels } from "../../utils/carBrandsAndModels";
 import DefaultAutoComplete from "../../components/DefaultAutoComplete/DefaultAutoComplete";
 import AddEditPhoto from "../../components/AddEditPhoto/AddEditPhoto";
 

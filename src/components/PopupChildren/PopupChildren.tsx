@@ -10,6 +10,7 @@ interface PopupChildrenProps {
 
 const PopupChildren: React.FC<PopupChildrenProps> = ({
   children,
+  //@ts-ignore
   zIndex = 999,
   onClose = () => {},
   show = true,

@@ -64,6 +64,7 @@ export const useMotDePasse = (props: MotDePasseProps) => {
       validationSchema,
       validateOnChange: true,
       validateOnBlur: true,
+      //@ts-ignore
       onSubmit: async (values) => {
         // This will be handled in the useEffect
       },

@@ -10,13 +10,16 @@ import CropImage from "../CropImage/CropImage";
 
 const UploadImageVideo: React.FC<UploadImageVideoProps> = (props) => {
   const {
+    // @ts-ignore
     fileName,
     filePreview,
     uploadInputRef,
     name,
+    // @ts-ignore
     title,
     label,
     // error = false,
+    // @ts-ignore
     required = false,
     disabled = false,
     readOnly = false,
@@ -37,14 +40,10 @@ const UploadImageVideo: React.FC<UploadImageVideoProps> = (props) => {
     cameraPosition = { bottom: "1%", right: "9%" },
     aspect = 1,
     userDefault,
-
-    supportedFormatsImages,
-    supportedFormatsVideos,
     loadingFile,
     newFileToCrop,
     handleClick,
     handleAfterCorp,
-    handleCancel,
     handleCancelCorp,
     setConfirmDelete,
     setPopupEditRemove,

@@ -2,7 +2,6 @@ import React from "react";
 import "./MesAnnonces.css";
 import { MesAnnoncesProps, useMesAnnonces } from "./useMesAnnonces";
 import CardHeader from "../../components/CardHeader/CardHeader";
-import { IoMdAddCircleOutline, IoMdMegaphone } from "react-icons/io";
 import { IoMegaphone } from "react-icons/io5";
 import { MdExposurePlus1 } from "react-icons/md";
 import { GrPowerReset } from "react-icons/gr";

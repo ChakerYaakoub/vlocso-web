@@ -12,6 +12,7 @@ import {
 import { MdOutlineWorkspacePremium } from "react-icons/md";
 
 const Bord: React.FC<BordProps> = (props) => {
+  //@ts-ignore
   const { formik, onSave, onNavigate, onLogout } = useBord(props);
   return (
     <div className="relative">

@@ -1,7 +1,3 @@
-import { Conversation } from "./Conversation";
-import { Interaction } from "./Interaction";
-import { PaymentPremium } from "./PaymentPremium";
-
 export interface User {
   userId?: number;
   firstName: string;

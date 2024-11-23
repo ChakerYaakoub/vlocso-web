@@ -6,9 +6,6 @@ import { handleRegister } from "./handleRegister";
 import { User } from "../../models/User";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../store/store";
-import { LoginRegister } from "../../models/responses/LoginRegister";
-import { registerUser } from "../../reducers/userReducer";
 
 export interface FormValues extends User {
   confirmPassword: string;
