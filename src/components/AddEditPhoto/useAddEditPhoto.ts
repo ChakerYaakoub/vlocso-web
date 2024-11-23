@@ -3,7 +3,7 @@ import { useState } from "react";
 export interface AddEditPhotoProps {
   // Add any additional props you need
 }
-
+//@ts-ignore
 export const useAddEditPhoto = (props: AddEditPhotoProps) => {
   const [images, setImages] = useState<File[]>([]);
 
