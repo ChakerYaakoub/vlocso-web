@@ -13,20 +13,28 @@ import RelaunchAnnonce from "../pages/RelaunchAnnonce/RelaunchAnnonce";
 // private: false si la route n'est pas protégée par un authentification
 
 const appRoutes = [
-  { path: "/home", element: <Home />, private: false },
-  { path: "/login", element: <Login />, private: false },
-  { path: "/forgot-password", element: <ForgotPassword />, private: false },
-  { path: "/change-password", element: <ChangePassword />, private: false },
-  { path: "/register", element: <Register />, private: false },
-  { path: "/profil", element: <Profil />, private: true },
-  { path: "/mes-annonces", element: <MesAnnonces />, private: true },
+  { path: "/vlocso", element: <Home />, private: false },
+  { path: "/vlocso/login", element: <Login />, private: false },
   {
-    path: "/mes-annonces/create-annonce",
+    path: "/vlocso/forgot-password",
+    element: <ForgotPassword />,
+    private: false,
+  },
+  {
+    path: "/vlocso/change-password",
+    element: <ChangePassword />,
+    private: false,
+  },
+  { path: "/vlocso/register", element: <Register />, private: false },
+  { path: "/vlocso/profil", element: <Profil />, private: true },
+  { path: "/vlocso/mes-annonces", element: <MesAnnonces />, private: true },
+  {
+    path: "/vlocso/mes-annonces/create-annonce",
     element: <CreateAnnonce />,
     private: true,
   },
   {
-    path: "/mes-annonces/relaunch-annonce",
+    path: "/vlocso/mes-annonces/relaunch-annonce",
     element: <RelaunchAnnonce />,
     private: true,
   },
