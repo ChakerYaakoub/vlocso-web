@@ -1,0 +1,25 @@
+.error-message {
+    background-color: #f8d7da; /* Light red background */
+    color: #721c24; /* Dark red text */
+    border: 1px solid #f5c6cb; /* Light red border */
+    padding: 2.5% 5%; /* Responsive padding around the text */
+    border-radius: 1.25%; /* Rounded corners */
+    margin: 2.5% 0; /* Responsive margin above and below the message */
+    font-size: 1rem; /* Responsive font size */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    width: 70%;
+    margin: 0 auto;
+}
+
+.error-message::before {
+    content: "⚠️"; /* Warning icon */
+    margin-right: 2%; /* Responsive space between icon and text */
+}
+
+/* Media query for smaller font size on tablet and phone */
+@media (max-width: 768px) {
+    .error-message {
+        font-size: 0.875rem; /* Smaller font size for tablet and phone */
+    }
+}

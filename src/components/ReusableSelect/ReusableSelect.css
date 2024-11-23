@@ -1,0 +1,8 @@
+.icon-wrapper-select {
+  /* display: none; */
+}
+.relativeSelect:hover .icon-wrapper-select {
+  display: block; /* Show the icon on hover */
+}
+
+/* -webkit-text-fill-color: #AEB7C0; */

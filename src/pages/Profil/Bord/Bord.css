@@ -1,0 +1,9 @@
+/* Your CSS styles here */
+.borderBtn {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+.premiumBtn {
+  background-color: var(--Tertiary);
+  color: var(--Primary);
+}

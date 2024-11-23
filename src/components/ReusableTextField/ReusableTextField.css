@@ -1,0 +1,24 @@
+/* Your CSS styles here */
+.TextFieldContainer {
+  /* margin-bottom: 1rem;
+  margin-top: 1rem; */
+}
+
+
+
+.TextFieldContainer input:is(:-webkit-autofill, :autofill) {
+ background-color: white !important;
+}
+
+
+
+
+input:-webkit-autofill {
+  -webkit-box-shadow:0 0 0 50px white inset; /* Change the color to your own background color */
+  -webkit-text-fill-color: #333;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px white inset;/*your box-shadow*/
+  -webkit-text-fill-color: #333;
+} 

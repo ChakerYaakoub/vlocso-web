@@ -1,0 +1,17 @@
+.my-logo {
+    width: 6rem;
+}
+
+header{
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+position: sticky;
+top: 0; 
+width: 100%;
+} 
+
+
+@media (max-width: 768px) {
+    .my-logo {
+        width: 4rem;
+    }
+}

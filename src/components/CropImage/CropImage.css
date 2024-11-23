@@ -1,0 +1,12 @@
+.reactEasyCrop_Container {
+  position: relative !important;
+  width: 90%;
+  margin: auto;
+  border: 1px solid #474242;
+  height: 30rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}

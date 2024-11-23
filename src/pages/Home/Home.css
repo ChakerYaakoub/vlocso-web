@@ -1,0 +1,12 @@
+.plusAnnonce{
+    background-color: var(--Tertiary);
+    color: white;
+    border-radius: 20px;
+   
+}
+
+.plusAnnonceDiv{
+    background-color: var(--Secondary);
+    border-radius: 20px;
+    border: 1px solid black;
+}

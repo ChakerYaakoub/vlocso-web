@@ -1,0 +1,4 @@
+/* Your CSS styles here */
+.active-tab {
+  border-right: 4px solid var(--Tertiary);
+}

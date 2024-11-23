@@ -1,0 +1,75 @@
+/* Custom styles for the previous and next buttons */
+
+/* Previous button */
+
+.Mycarousel{
+    padding:  20px;
+    margin: 10px 10px;
+   
+
+    
+}
+.CarouselthreeItems-image{
+ 
+    height: 9rem;
+ 
+    aspect-ratio: 1 / 1;
+}
+.control-dots{
+bottom: -15px !important;
+}
+
+.carousel .control-prev.control-arrow {
+    background-color: rgba(0, 0, 0, 0.5); /* Background color */
+    border-radius: 50%; /* Circular button */
+    /* width: 1rem;
+    height: 1rem;  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Make sure it's positioned relative to the carousel */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Center alignment correction */
+    height: 2rem;
+  
+    z-index: 2; /* Ensure it's above the content */
+  }
+  
+  /* Next button */
+  .carousel .control-next.control-arrow {
+    background-color: rgba(0, 0, 0, 0.5); /* Background color */
+    border-radius: 50%; /* Circular button */
+    /* width: 2rem; 
+    height: 2rem;  */
+    height: 2rem;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Make sure it's positioned relative to the carousel */
+    top: 50%; /* Center it vertically */
+    transform: translateY(-50%); /* Center alignment correction */
+    z-index: 2; /* Ensure it's above the content */
+  }
+  
+  /* Optional hover effect */
+  .carousel .control-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
+  }
+
+  @media (max-width: 768px) {
+    .carousel .control-dots {
+      display: none;
+    }
+    .carousel .control-prev.control-arrow,
+    .carousel .control-next.control-arrow {
+      height: 1rem; /* Make the arrow smaller */
+      width: 1rem;
+    }
+    .CarouselthreeItems-image{
+ 
+        height: 3rem;
+     
+        aspect-ratio: 1 / 1;
+    }
+  }
