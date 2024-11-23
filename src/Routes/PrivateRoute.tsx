@@ -18,7 +18,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
       {children} {/* Render the protected component if authenticated */}
     </>
   ) : (
-    <Navigate to="/vlocso" replace /> // Redirect to login if not authenticated or Home
+    <Navigate to="/" replace /> // Redirect to login if not authenticated or Home
   );
 };
 

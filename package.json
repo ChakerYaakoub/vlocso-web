@@ -1,7 +1,7 @@
 {
   "name": "web",
   "private": true,
-  "homepage": "https://vlocso.netlify.app/vlocso",
+  "homepage": "https://vlocso.netlify.app/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
