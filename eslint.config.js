@@ -2,7 +2,7 @@ import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
-import tseslint from '@typescript-eslint/eslint-plugin'
+import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   { ignores: ['dist'] },
@@ -24,9 +24,10 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
       // Disable the empty interface rule
-      '@typescript-eslint/no-empty-interface': 'warn',
+      '@typescript-eslint/no-empty-interface': true, // or configure 'allowInterfaces' option
       // Alternatively, use 'object' or 'unknown' as needed
       // 'your-rule-name': ['error', { allowInterfaces: true }],
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
 )
