@@ -13,8 +13,8 @@ import RelaunchAnnonce from "../pages/RelaunchAnnonce/RelaunchAnnonce";
 // private: false si la route n'est pas protégée par un authentification
 
 const appRoutes = [
-  { path: "/", element: <Home />, private: false },
-  { path: "/Login", element: <Login />, private: false },
+  { path: "/home", element: <Home />, private: false },
+  { path: "/login", element: <Login />, private: false },
   { path: "/forgot-password", element: <ForgotPassword />, private: false },
   { path: "/change-password", element: <ChangePassword />, private: false },
   { path: "/register", element: <Register />, private: false },
