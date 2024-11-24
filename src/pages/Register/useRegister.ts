@@ -94,6 +94,7 @@ export const useRegister = (props: RegisterProps) => {
       // country: "",
       city: "",
       birthDate: "",
+
       // Add other initial values for step 2
     },
     validationSchema:

@@ -54,7 +54,7 @@ export const useBord = (props: BordProps) => {
   const dispatch = useDispatch();
   const formik: FormikProps<FormValuesBord> = useFormik<FormValuesBord>({
     initialValues: {
-      urlImageUser: props.user.urlImageUser,
+      urlImageUser: props.user.urlImageUser!,
       firstName: props.user.firstName,
       lastName: props.user.lastName,
     },

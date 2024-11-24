@@ -1,16 +1,16 @@
 export interface User {
-  userId: number;
+  userId?: number;
   firstName: string;
   lastName: string;
   email: string;
-  role: string;
+  role?: string;
   type?: string;
   password: string;
-  phoneNumber: string;
-  country: string;
-  city: string;
-  birthDate: string;
-  urlImageUser: string | null;
+  phoneNumber?: string;
+  country?: string;
+  city?: string;
+  birthDate?: string;
+  urlImageUser?: string | null;
   unreadCountNotifications?: number;
   lastLogin?: string;
   emailVerified?: boolean;
