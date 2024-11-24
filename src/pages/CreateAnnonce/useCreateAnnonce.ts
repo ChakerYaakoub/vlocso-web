@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { selectUserData } from "../../reducers/userReducer";
 import { carBrandsAndModels } from "../../utils/carBrandsAndModels";
 import { motoBrandsAndModels } from "../../utils/motoBrandsAndModels";
+import { useAlert } from "../../context/AlertContext";
+import { AlertType, AlertVariant } from "../../models/Alert/AlertTypes";
 export interface CreateAnnonceProps {}
 
 const validationSchemaStep1 = Yup.object({
@@ -97,7 +99,7 @@ const validationSchemaStep3 = Yup.object({
   description: Yup.string()
     .required("La description est requise")
     .min(2, "La description doit comporter au moins 2 caractères")
-    .max(30, "La description doit comporter au maximum 30 caractères"),
+    .max(5000, "La description doit comporter au maximum 5000 caractères"),
 });
 
 const validationSchemaStep4 = Yup.object({
@@ -115,6 +117,7 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
   const [modelOptions, setModelOptions] = useState<string[]>([]);
 
   const [images, setImages] = useState<File[]>([]);
+  const { showAlert } = useAlert();
 
   const handleImagesChange = (files: File[]) => {
     setImages(files);
@@ -306,13 +309,19 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
 
       handleCreateAnnonce(formik.values)
         .then((result) => {
-          if (result.success) {
+          if (result.success && result.data) {
             formik.resetForm();
             setSuccessMessage(result.message);
             setTimeout(() => {
               setSuccessMessage("");
+              showAlert({
+                message: result.message,
+                title: "Succès",
+                type: AlertType.Success,
+                variant: AlertVariant.Standard,
+              });
 
-              navigate("/profil");
+              navigate(`/annonce-details/${result.data.annonceId}`);
             }, 50);
           } else {
             // Set error message from the result

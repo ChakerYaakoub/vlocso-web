@@ -13,7 +13,7 @@ const path = require('path');
 const folder = 'components'
 const appRoutes = [
 
-  { path: `${folder}/AddEditPhoto`, title: 'AddEditPhoto' },
+  { path: `${folder}/ToTop`, title: 'ToTop' },
 
 
 ];

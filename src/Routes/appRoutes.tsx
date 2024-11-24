@@ -1,4 +1,5 @@
 import { Home } from "../pages";
+import AnnonceDetails from "../pages/AnnonceDetails/AnnonceDetails";
 import { ChangePassword } from "../pages/ChangePassword/ChangePassword";
 import CreateAnnonce from "../pages/CreateAnnonce/CreateAnnonce";
 import ForgotPassword from "../pages/ForgotPassword/ForgotPassword";
@@ -29,6 +30,11 @@ const appRoutes = [
     path: "/mes-annonces/relaunch-annonce",
     element: <RelaunchAnnonce />,
     private: true,
+  },
+  {
+    path: "/annonce-details/:id",
+    element: <AnnonceDetails />,
+    private: false,
   },
 
   { path: "*", element: <NotFound404 /> },

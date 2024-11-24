@@ -6,6 +6,8 @@ import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./Routes/PrivateRoute";
 import { useEffect, useState } from "react";
 import { LoadingProvider } from "./context/LoadingContext"; // Import LoadingProvider
+import { ServerErrorProvider } from "./context/ServerErrorContext";
+import ToTop from "./components/ToTop/ToTop";
 
 // json-server --watch src/Dummy/db.json
 function App() {
@@ -19,6 +21,9 @@ function App() {
     console.log("isLoggedIn", isLoggedIn);
   }, [localStorage.getItem("accessToken"), isLoggedIn]);
 
+  // note : you have in each page that you sue the context of LoadingProvider and ServerErrorProvider :
+  // if (loading || error) return null;
+
   return (
     <div className="App " id="App">
       {/* Ensure that all components using useAlert are within this provider */}
@@ -26,25 +31,29 @@ function App() {
         <Header isLoggedIn={isLoggedIn} />
         {/* <ToTopScrollTo /> */}
         <div className="main">
-          <LoadingProvider>
-            <Routes>
-              {appRoutes.map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={
-                    route.private ? (
-                      <PrivateRoute>{route.element}</PrivateRoute>
-                    ) : (
-                      route.element
-                    )
-                  }
-                />
-              ))}
-            </Routes>
-          </LoadingProvider>
+          <ServerErrorProvider>
+            <LoadingProvider>
+              <ToTop />
+              <Routes>
+                {appRoutes.map((route, index) => (
+                  <Route
+                    key={index}
+                    path={route.path}
+                    element={
+                      route.private ? (
+                        <PrivateRoute>{route.element}</PrivateRoute>
+                      ) : (
+                        route.element
+                      )
+                    }
+                  />
+                ))}
+              </Routes>
+            </LoadingProvider>
+          </ServerErrorProvider>
         </div>
         <Footer />
+
         {/* {isLoggedIn ? <div>Welcome back!</div> : <div>Please log in.</div>} */}
       </Router>
     </div>

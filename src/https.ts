@@ -11,4 +11,5 @@ export const API_ENDPOINTS = {
   UPDATE_USER: `${API_URL}/update-user`,
   UPDATE_USER_IMAGE: `${API_URL}/update-user-image`,
   CHANGE_PASSWORD_PROFILE: `${API_URL}/change-password-profile`,
+  GET_ANNONCE_BY_ID: (id: string) => `${API_URL}/annonces/${id}`,
 };

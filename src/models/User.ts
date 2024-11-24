@@ -1,27 +1,35 @@
 export interface User {
-  userId?: number;
+  userId: number;
   firstName: string;
   lastName: string;
   email: string;
-  password: string;
-  role?: number;
+  role: string;
+  type: string;
   phoneNumber: string;
-  country?: string;
+  country: string;
   city: string;
-  birthDate?: string; // new field
-  urlImageUser?: string;
-  unreadCountNotifications?: number;
-  lastLogin?: Date;
-  updatedAt?: Date;
-  createdAt?: Date;
-  // getUser(): void;
-  // createUser(): void;
-  // updateUser(): void;
-  // deleteUser(): void;
-  // login(): void;
-  // register(): void;
-  // getConversation(): Conversation [];
-  // getPayments(): PaymentPremium[];
-  // getInteractions(): Interaction[];
-  // getNotifications(): Notification[];
+  birthDate: string;
+  urlImageUser: string | null;
+  unreadCountNotifications: number;
+  lastLogin: string;
+  emailVerified: boolean;
+  emailVerificationToken: string;
+  emailVerificationTokenExpiration: string;
+  passwordVerificationToken: string | null;
+  passwordVerificationTokenExpiration: string | null;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+  // annonces: any[];
+  // interactions: any[];
+  // notifications: any[];
+  // conversations: any[];
+  // messagesSent: any[];
+  // messagesReceived: any[];
+  // authProviders: any[];
+  // refreshTokensBlacklist: {
+  //   refreshTokenBlackListId: number;
+  //   refreshToken: string;
+  //   createdAt: string;
+  // }[];
 }

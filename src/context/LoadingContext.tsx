@@ -19,7 +19,8 @@ export const LoadingProvider: React.FC<{ children: ReactNode }> = ({
 
   return (
     <LoadingContext.Provider value={{ loading, setLoading }}>
-      {loading ? <Loader /> : children}
+      {loading && <Loader />}
+      {children}
     </LoadingContext.Provider>
   );
 };
