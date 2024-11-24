@@ -84,6 +84,7 @@ export const useRegister = (props: RegisterProps) => {
   };
 
   const formik: FormikProps<FormValues> = useFormik<FormValues>({
+    // @ts-ignore
     initialValues: {
       email: "",
       password: "",
