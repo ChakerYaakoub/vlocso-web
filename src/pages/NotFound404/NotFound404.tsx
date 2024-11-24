@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NotFound404.css";
 
 import { Link } from "react-router-dom";
@@ -6,7 +6,13 @@ import { NotFound404Props, useNotFound404 } from "./useNotFound404";
 
 const NotFound404: React.FC<NotFound404Props> = (props) => {
   // eslint-disable-next-line no-empty-pattern
-  const { } = useNotFound404(props);
+  const {} = useNotFound404(props);
+  useEffect(() => {
+    const appElement = document.getElementById("App");
+    if (appElement) {
+      appElement.scrollIntoView({ behavior: "smooth" });
+    }
+  }, []);
 
   return (
     <section className=" section" id="MyNotfound">

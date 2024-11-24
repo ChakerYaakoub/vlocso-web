@@ -1,21 +1,15 @@
 import "./App.css";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  // useLocation,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import appRoutes from "./Routes/appRoutes";
 import { Header } from "./components";
 import Footer from "./components/Footer/Footer";
-// import { useSelector } from "react-redux";
-// import { selectIsLoggedIn } from "./reducers/userReducer";
 import PrivateRoute from "./Routes/PrivateRoute";
 import { useEffect, useState } from "react";
+import { LoadingProvider } from "./context/LoadingContext"; // Import LoadingProvider
 
 // json-server --watch src/Dummy/db.json
 function App() {
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  // test alert
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -25,37 +19,32 @@ function App() {
     console.log("isLoggedIn", isLoggedIn);
   }, [localStorage.getItem("accessToken"), isLoggedIn]);
 
-  // const { pathname } = useLocation();
-
-  //   // Scroll to top on route change
-  //   useEffect(() => {
-  //     window.scrollTo(0, 0);
-  //   }, [pathname]);
-
   return (
-    <div className="App">
+    <div className="App " id="App">
+      {/* Ensure that all components using useAlert are within this provider */}
       <Router>
         <Header isLoggedIn={isLoggedIn} />
+        {/* <ToTopScrollTo /> */}
         <div className="main">
-          <Routes>
-            {appRoutes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                element={
-                  route.private ? (
-                    <PrivateRoute>{route.element}</PrivateRoute>
-                  ) : (
-                    route.element
-                  )
-                }
-              />
-            ))}
-          </Routes>
+          <LoadingProvider>
+            <Routes>
+              {appRoutes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    route.private ? (
+                      <PrivateRoute>{route.element}</PrivateRoute>
+                    ) : (
+                      route.element
+                    )
+                  }
+                />
+              ))}
+            </Routes>
+          </LoadingProvider>
         </div>
-
         <Footer />
-
         {/* {isLoggedIn ? <div>Welcome back!</div> : <div>Please log in.</div>} */}
       </Router>
     </div>
