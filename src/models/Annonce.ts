@@ -74,3 +74,7 @@ export interface FormValuesCreateAnnonce {
   description: string;
   images: string[];
 }
+
+export interface ImageUrl {
+  secure_url: string;
+}

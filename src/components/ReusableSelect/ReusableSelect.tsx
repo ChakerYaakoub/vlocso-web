@@ -152,7 +152,7 @@ const ReusableSelect: React.FC<ReusableSelectProps> = (props) => {
           renderValue={(selected) => {
             if (!selected) {
               return (
-                <span className="flex items-center gap-2">
+                <span className="flex items-center gap-2 text-gray-400">
                   {icon}
                   {placeholder}
                 </span>

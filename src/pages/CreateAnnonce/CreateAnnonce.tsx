@@ -35,7 +35,7 @@ import {
 } from "../../utils/createAnnonceArrays";
 import { Option } from "../../models/Inputs/FormType";
 import DefaultAutoComplete from "../../components/DefaultAutoComplete/DefaultAutoComplete";
-import AddEditPhoto from "../../components/AddEditPhoto/AddEditPhoto";
+import UploadMultipleImages from "../../components/UploadMultipleImages/UploadMultipleImages";
 
 const CreateAnnonce: React.FC<CreateAnnonceProps> = (props) => {
   const {
@@ -46,9 +46,10 @@ const CreateAnnonce: React.FC<CreateAnnonceProps> = (props) => {
     errorRegisterMsg,
     markOptions,
     modelOptions,
+    textsInputsCreateAnnonce,
     setStep,
     changeStep,
-    textsInputsCreateAnnonce,
+    handleImagesChange,
   } = useCreateAnnonce(props);
 
   return (
@@ -106,12 +107,16 @@ const CreateAnnonce: React.FC<CreateAnnonceProps> = (props) => {
           </CustomButton>
         </div>
 
-        <h2 className="text-center text-lg font-bold pb-4 pt-3 md:pt-0">
-          {`Step ${step}: ${
+        <h2
+          className={`text-center text-lg font-bold ${
+            step == 4 ? "pb-0" : "pb-4"
+          }   pt-3 md:pt-0`}
+        >
+          {`Étape ${step}: ${
             step === 1
-              ? "Annonce Information"
+              ? "Informations de l'annonce"
               : step === 2
-              ? "Vehicle Information"
+              ? "Informations du véhicule"
               : step === 3
               ? "Description"
               : "Images"
@@ -121,11 +126,12 @@ const CreateAnnonce: React.FC<CreateAnnonceProps> = (props) => {
         <form
           onSubmit={formik.handleSubmit}
           id="create-annonce-form"
-          className="mt-6 grid grid-cols-1  gap-6 md:gap-4"
+          // mt-6
+          className=" grid grid-cols-1  gap-6 md:gap-4"
         >
           {/* {---------------------- step 1 ---------------------- } */}
 
-          {step === 4 && (
+          {step === 1 && (
             <>
               {/* -----title---- */}
               <ReusableTextField
@@ -524,12 +530,22 @@ const CreateAnnonce: React.FC<CreateAnnonceProps> = (props) => {
           )}
           {/* {---------------------- step 4 ---------------------- } */}
 
-          {step === 1 && (
+          {step === 4 && (
             <>
-              <p className=" text-xs text-gray-500">
-                ps: le premier photo est la photo de couverture
-              </p>
-              <AddEditPhoto />
+              <UploadMultipleImages
+                name="images"
+                text={
+                  <p className="text-xs text-gray-500 py-2 ">
+                    ps: la première photo sera la photo de couverture <br />
+                    <span className="font-bold">
+                      vous pouvez changer l'ordre des photos en les faisant
+                      glisser et déposer
+                    </span>
+                  </p>
+                }
+                maxFileSize={5} // Set max file size in MB
+                onChange={handleImagesChange}
+              />
             </>
           )}
           <div className="text-center mt-6 mb-6">
@@ -537,8 +553,9 @@ const CreateAnnonce: React.FC<CreateAnnonceProps> = (props) => {
               onClick={() => changeStep(step)}
               colorConfirm="blue"
               disabled={loading}
+              type="submit"
             >
-              {loading ? "Loading..." : step === 4 ? "Submit" : "Continue"}
+              {loading ? "Chargement..." : step === 4 ? "Poster" : "Continuer"}
             </CustomButton>
           </div>
         </form>

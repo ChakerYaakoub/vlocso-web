@@ -114,6 +114,12 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
   const [markOptions, setMarkOptions] = useState<string[]>([]);
   const [modelOptions, setModelOptions] = useState<string[]>([]);
 
+  const [images, setImages] = useState<File[]>([]);
+
+  const handleImagesChange = (files: File[]) => {
+    setImages(files);
+  };
+
   // get the user id from redux
 
   const user = useSelector(selectUserData);
@@ -132,7 +138,7 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
         model: "",
         city: "",
         mark: "",
-        year: 0,
+        year: 2000,
         gearbox: "",
         climatisation: "",
         fuelType: "",
@@ -165,23 +171,33 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
   useEffect(() => {
     if (formik.values.type === "Voiture") {
       setMarkOptions(carBrandsAndModels.map((item) => item.brand));
-    } else {
+    } else if (formik.values.type === "Moto") {
       setMarkOptions(motoBrandsAndModels.map((item) => item.brand));
+    } else {
+      setMarkOptions([]);
     }
   }, [formik.values.type]);
 
   // switch mark ==>  model create options
   useEffect(() => {
-    if (formik.values.mark) {
-      setModelOptions(
-        carBrandsAndModels
-          .filter((item) => item.brand == formik.values.mark)
-          .flatMap((item) => item.models)
-      );
-    } else {
+    if (!formik.values.mark) {
       setModelOptions([]);
+      return;
     }
-  }, [formik.values.mark]);
+
+    const brandsAndModels =
+      formik.values.type === "Voiture"
+        ? carBrandsAndModels
+        : formik.values.type === "Moto"
+        ? motoBrandsAndModels
+        : [];
+
+    const models =
+      brandsAndModels.find((item) => item.brand === formik.values.mark)
+        ?.models || [];
+
+    setModelOptions(models);
+  }, [formik.values.mark, formik.values.type]);
 
   const focusOnFirstError = (formik: FormikProps<FormValuesCreateAnnonce>) => {
     const firstErrorElement = document.getElementById(
@@ -265,14 +281,26 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
         }
         break;
       case 4:
-        setConfirmSubmit(true);
+        if (formik.values.images.length > 0) {
+          setConfirmSubmit(true);
+        } else {
+          setErrorRegisterMsg("Veuillez télécharger au moins une image");
+          setTimeout(() => {
+            setErrorRegisterMsg("");
+          }, 5000);
+        }
         break;
     }
   };
 
+  useEffect(() => {
+    formik.setFieldValue("images", images);
+    // console.log("formik.values", formik.values);
+  }, [formik.values.images, images]);
+
   // the last confirmation  to submit the form
   useEffect(() => {
-    console.log("(formik.errors", formik.errors);
+    // console.log("(formik.errors", formik.errors);
     if (confirmSubmit && Object.keys(formik.errors).length === 0) {
       setLoading(true);
 
@@ -322,6 +350,7 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
     markOptions,
     modelOptions,
     setStep,
+    handleImagesChange,
     changeStep,
     setConfirmSubmit,
     setLoading,

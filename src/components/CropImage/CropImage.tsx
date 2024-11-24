@@ -57,6 +57,7 @@ const CropImage: React.FC<CropImageProps> = (props) => {
             // on click back
             disabled={loading || loadingGetCroppedImg}
             onClick={handleCancel}
+            type="button"
           >
             Cancel
           </CustomButton>
@@ -65,6 +66,7 @@ const CropImage: React.FC<CropImageProps> = (props) => {
             width={"w-1/2 md:w-1/5  p-3"}
             onClick={handleSave}
             colorConfirm={"blue"}
+            type="button"
             disabled={loading || loadingGetCroppedImg}
           >
             {loading || loadingGetCroppedImg ? "Loading..." : "Save"}

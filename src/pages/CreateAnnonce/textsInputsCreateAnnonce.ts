@@ -128,12 +128,11 @@ export const textsInputsCreateAnnonce: CreateAnnonceInputs = {
     id: "gearbox",
     type: "text",
     name: "gearbox",
-    helperText:
-      "Veuillez entrer la boîte de vitesses du véhicule ex : Automatique, Manuelle",
-    placeholder: " Automatique, Manuelle",
+    helperText: "Veuillez sélectionner la boîte de vitesses",
+    placeholder: " Sélectionner la boîte de vitesses",
     size: "small",
     required: true,
-    afterFocus: "Entrez la boîte de vitesses du véhicule",
+    afterFocus: "Sélectionnez la boîte de vitesses",
   },
   climatisation: {
     title: "Climatisation",
@@ -141,12 +140,11 @@ export const textsInputsCreateAnnonce: CreateAnnonceInputs = {
     id: "climatisation",
     type: "text",
     name: "climatisation",
-    helperText:
-      "Veuillez entrer la climatisation du véhicule ex : Climatisation, Non climatisé",
-    placeholder: " Climatisation, Non climatisé",
+    helperText: "Veuillez sélectionner la climatisation du véhicule",
+    placeholder: " Sélectionner la climatisation du véhicule",
     size: "small",
     required: true,
-    afterFocus: "Entrez la climatisation du véhicule",
+    afterFocus: "Sélectionnez la climatisation du véhicule",
   },
   condition: {
     title: "État",
@@ -166,12 +164,11 @@ export const textsInputsCreateAnnonce: CreateAnnonceInputs = {
     id: "fuelType",
     type: "text",
     name: "fuelType",
-    helperText:
-      "Veuillez entrer le type de carburant du véhicule ex : Essence, Diesel",
-    placeholder: " Essence, Diesel",
+    helperText: "Veuillez sélectionner le type de carburant du véhicule",
+    placeholder: " Sélectionner le type de carburant du véhicule",
     size: "small",
     required: true,
-    afterFocus: "Entrez le type de carburant du véhicule",
+    afterFocus: "Sélectionnez le type de carburant du véhicule",
   },
   klm_counter: {
     title: "Compteur kilométrique",

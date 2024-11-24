@@ -13,17 +13,19 @@ interface UploadMultipleImagesProps {
   acceptedFormats?: string[];
   onChange: (files: File[]) => void;
   helperText?: string;
+  text?: string | React.ReactNode;
 }
 
 const UploadMultipleImages: React.FC<UploadMultipleImagesProps> = ({
-  // @ts-ignore
   name,
   maxFileSize,
   acceptedFormats = ["image/jpeg", "image/png", "image/gif"],
   onChange,
   helperText,
+  text = "Add photos",
 }) => {
   const [filePreviews, setFilePreviews] = useState<string[]>([]);
+  const [fileList, setFileList] = useState<File[]>([]);
   const [newFileToCrop, setNewFileToCrop] = useState<File | null>(null);
   const [loadingFile, setLoadingFile] = useState(false);
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
@@ -42,71 +44,80 @@ const UploadMultipleImages: React.FC<UploadMultipleImagesProps> = ({
       }
     });
 
-    // Clear the input after setting the file for cropping
-    event.target.value = "";
+    event.target.value = ""; // Clear input after processing files
   };
 
   const handleRemoveImage = (index: number) => {
-    setFilePreviews((prev) => prev.filter((_, i) => i !== index));
-    onChange(
-      filePreviews
-        .filter((_, i) => i !== index)
-        .map((preview) => new File([], preview))
-    );
+    const updatedFiles = fileList.filter((_, i) => i !== index);
+    const updatedPreviews = filePreviews.filter((_, i) => i !== index);
+    setFileList(updatedFiles);
+    setFilePreviews(updatedPreviews);
+    onChange(updatedFiles);
   };
 
   const handleOnDragEnd = (result: any) => {
     if (!result.destination) return;
-    const items = Array.from(filePreviews);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-    setFilePreviews(items);
-    onChange(items.map((preview) => new File([], preview)));
+    const updatedPreviews = Array.from(filePreviews);
+    const updatedFiles = Array.from(fileList);
+
+    const [movedPreview] = updatedPreviews.splice(result.source.index, 1);
+    const [movedFile] = updatedFiles.splice(result.source.index, 1);
+
+    updatedPreviews.splice(result.destination.index, 0, movedPreview);
+    updatedFiles.splice(result.destination.index, 0, movedFile);
+
+    setFilePreviews(updatedPreviews);
+    setFileList(updatedFiles);
+    onChange(updatedFiles);
   };
 
   const handleCropImage = (croppedImage: File) => {
     setLoadingFile(true);
     const reader = new FileReader();
+
     reader.onload = (e) => {
       if (e.target && e.target.result) {
         setFilePreviews((prev) => [...prev, e.target!.result as string]);
-        //@ts-ignore
-        onChange([...filePreviews, croppedImage]);
+        setFileList((prev) => [...prev, croppedImage]);
+        onChange([...fileList, croppedImage]);
       }
       setLoadingFile(false);
     };
+
     reader.readAsDataURL(croppedImage);
     setNewFileToCrop(null); // Reset cropping state
   };
 
+  // useEffect(() => {
+  //   console.log("File Previews:", filePreviews);
+  //   console.log("File List:", fileList);
+  // }, [filePreviews, fileList]);
+
   return (
-    <div>
+    <div className="mt-2">
       <input
         type="file"
+        name={name}
         accept={acceptedFormats.join(",")}
         multiple
         onChange={handleFileChange}
         ref={uploadInputRef}
-        style={{
-          width: "0px",
-          height: "0px",
-          opacity: 0,
-          overflow: "hidden",
-          // position: 'absolute',
-          zIndex: -1,
-        }}
+        style={{ display: "none" }}
       />
+
       <div className="flex items-center justify-center mb-2">
         <button
           onClick={() => uploadInputRef.current?.click()}
+          type="button"
           className="bg-gray-600 p-2 rounded-full flex items-center justify-center relative"
         >
           <FaPlus className="absolute top-3 right-2 text-white" size={10} />
           <CameraSVG />
         </button>
       </div>
+      {text}
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 pt-2 mt-2 border-t-2 border-gray-200">
         <DragDropContext onDragEnd={handleOnDragEnd}>
           <Droppable droppableId="droppable">
             {(provided) => (
@@ -123,7 +134,7 @@ const UploadMultipleImages: React.FC<UploadMultipleImagesProps> = ({
                   >
                     {(provided) => (
                       <div
-                        className="image-preview"
+                        className="image-preview relative"
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
@@ -131,7 +142,7 @@ const UploadMultipleImages: React.FC<UploadMultipleImagesProps> = ({
                         <img
                           src={preview}
                           alt={`Uploaded ${index}`}
-                          className="w-full h-32 w-full object-cover"
+                          className="w-full h-32 object-cover"
                         />
                         <button
                           onClick={() => handleRemoveImage(index)}
@@ -148,6 +159,11 @@ const UploadMultipleImages: React.FC<UploadMultipleImagesProps> = ({
             )}
           </Droppable>
         </DragDropContext>
+        {filePreviews.length === 0 && (
+          <p className="text-sm text-gray-500 text-center pt-5">
+            No images uploaded yet
+          </p>
+        )}
       </div>
       {newFileToCrop && (
         <CropImage
