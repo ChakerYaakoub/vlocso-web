@@ -11,6 +11,7 @@ export interface Annonce {
   quantity: number;
   payerId: number;
   transaction: string;
+  description: string;
   annonceState: string;
   country: string;
   premium: boolean;
@@ -109,10 +110,50 @@ export interface AnnonceResponse {
 }
 
 // get annonce by id
-export interface AnnonceByIdResponse {
-  data: {
-    annonce: Annonce;
-    user: User;
+export interface AnnonceById {
+  annonceId: number;
+  title: string;
+  price: string;
+  startDate: string;
+  endDate: string;
+  quantity: number;
+  transaction: string;
+  annonceState: string;
+  country: string;
+  city: string;
+  phoneNumber: string;
+  premium: boolean;
+  vehicle: {
+    vehicleId: number;
+    type: string;
+    mark: string;
+    model: string;
+    year: number;
+    fuelType: string;
+    gearbox: string;
+    klmCounter: string;
+    condition: string;
+    climatisation: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
   };
+  images: Image[];
+  paymentsPremium: any[];
+  interactions: any[];
+  conversations: any[];
+  notifications: any[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface DataAnnonce {
+  annonce: AnnonceById;
+  user: User;
+}
+export interface AnnonceByIdResponse {
+  data: DataAnnonce;
   message: string;
 }
+
+export interface AnnonceHome extends AnnonceByIdResponse {}

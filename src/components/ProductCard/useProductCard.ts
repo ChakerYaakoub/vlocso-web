@@ -1,8 +1,8 @@
-import { Annonce } from "../../models/Annonce"
+import { DataAnnonce } from "../../models/Annonce";
 
-export  interface ProductCardProps{
-    item : Annonce
+export interface ProductCardProps {
+  item: DataAnnonce;
 }
-export const useProductCard =(props: ProductCardProps )=>{
-    return {...props}
-}
+export const useProductCard = (props: ProductCardProps) => {
+  return { ...props };
+};

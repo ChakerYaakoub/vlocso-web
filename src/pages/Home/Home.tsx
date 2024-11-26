@@ -2,14 +2,20 @@ import { TiWorld } from "react-icons/ti";
 import CarouselthreeItems from "../../components/CarouselthreeItems/CarouselthreeItems";
 import Carousel from "../../components/DefaultCarousel/DefaultCarousel";
 import { SlideAnnonce } from "../../components/SlideAnnonce/SlideAnnonce";
-import { dummyAnnonces } from "../../Dummy/data";
 import "./Home.css";
 import { useHome, HomeProps } from "./useHome";
 import { FaCar, FaMotorcycle } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
 export const Home = (props: HomeProps) => {
-  const { carouselItems, marksMoto, marksVoiture } = useHome(props);
+  const { carouselItems, marksMoto, marksVoiture, loading, error, data } =
+    useHome(props);
+
+  if (loading || error) return null;
+
+  if (!data || data.length === 0) {
+    return null;
+  }
 
   return (
     <div>
@@ -39,7 +45,7 @@ export const Home = (props: HomeProps) => {
 
       <section className="section">
         <SlideAnnonce
-          data={dummyAnnonces}
+          data={data}
           sliderTitle="Recommandations générale"
           reactIcon={<TiWorld className="mr-2" />}
         />
@@ -48,7 +54,7 @@ export const Home = (props: HomeProps) => {
 
       <section className="section">
         <SlideAnnonce
-          data={dummyAnnonces}
+          data={data}
           sliderTitle="Voitures"
           reactIcon={<FaCar className="mr-2" />}
         />
@@ -57,7 +63,7 @@ export const Home = (props: HomeProps) => {
 
       <section className="section">
         <SlideAnnonce
-          data={dummyAnnonces}
+          data={data}
           sliderTitle="Motos"
           reactIcon={<FaMotorcycle className="mr-2" />}
         />

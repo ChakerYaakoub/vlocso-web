@@ -1,0 +1,9 @@
+/* Your CSS styles here */
+
+#carouselDetailsAnnonce .carousel .control-next.control-arrow {
+  background-color: #1d4ed8;
+}
+
+#carouselDetailsAnnonce .carousel .control-prev.control-arrow {
+  background-color: #1d4ed8;
+}
