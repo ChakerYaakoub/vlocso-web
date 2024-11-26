@@ -15,6 +15,7 @@ export interface AnnonceDetailsProps {}
 // http://localhost:5173/annonce-details/9
 export const useAnnonceDetails = (props: AnnonceDetailsProps) => {
   const { id } = useParams();
+  // @ts-ignore
   const [data, setData] = useState<AnnonceByIdResponse | null>(null);
   const [annonce, setAnnonce] = useState<AnnonceById | null>(null);
   const [user, setUser] = useState<User | null>(null);

@@ -164,20 +164,21 @@ export const dummyAnnonces: Annonce[] = [
     updatedAt: new Date("2024-01-15"),
     quantity: 1,
     premium: true,
+    description: "Description de l'annonce",
     images: [
       {
-        image_id: 1,
-        image_url:
+        imageId: 1,
+        imageUrl:
           "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
-        created_at: new Date("2023-11-01"),
-        updated_at: new Date("2023-11-01"),
+        createdAt: new Date("2023-11-01"),
+        updatedAt: new Date("2023-11-01"),
       },
       {
-        image_id: 2,
-        image_url:
+        imageId: 2,
+        imageUrl:
           "https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6",
-        created_at: new Date("2023-11-02"),
-        updated_at: new Date("2023-11-02"),
+        createdAt: new Date("2023-11-02"),
+        updatedAt: new Date("2023-11-02"),
       },
     ],
   },
@@ -199,20 +200,21 @@ export const dummyAnnonces: Annonce[] = [
     remain: 30,
     createdAt: new Date("2024-01-15"),
     updatedAt: new Date("2024-01-20"),
+    description: "Description de l'annonce",
     images: [
       {
-        image_id: 3,
-        image_url:
+        imageId: 3,
+        imageUrl:
           "https://images.unsplash.com/photo-1590362891991-f776e747a588",
-        created_at: new Date("2024-01-15"),
-        updated_at: new Date("2024-01-15"),
+        createdAt: new Date("2024-01-15"),
+        updatedAt: new Date("2024-01-15"),
       },
       {
-        image_id: 4,
-        image_url:
+        imageId: 4,
+        imageUrl:
           "https://images.unsplash.com/photo-1619767886558-efdc259cde1a",
-        created_at: new Date("2024-01-16"),
-        updated_at: new Date("2024-01-16"),
+        createdAt: new Date("2024-01-16"),
+        updatedAt: new Date("2024-01-16"),
       },
     ],
   },
@@ -234,20 +236,21 @@ export const dummyAnnonces: Annonce[] = [
     remain: 365,
     createdAt: new Date("2024-02-01"),
     updatedAt: new Date("2024-02-15"),
+    description: "Description de l'annonce",
     images: [
       {
-        image_id: 5,
-        image_url:
+        imageId: 5,
+        imageUrl:
           "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
-        created_at: new Date("2024-02-01"),
-        updated_at: new Date("2024-02-01"),
+        createdAt: new Date("2024-02-01"),
+        updatedAt: new Date("2024-02-01"),
       },
       {
-        image_id: 6,
-        image_url:
+        imageId: 6,
+        imageUrl:
           "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
-        created_at: new Date("2024-02-02"),
-        updated_at: new Date("2024-02-02"),
+        createdAt: new Date("2024-02-02"),
+        updatedAt: new Date("2024-02-02"),
       },
     ],
   },
@@ -269,20 +272,21 @@ export const dummyAnnonces: Annonce[] = [
     remain: 365,
     createdAt: new Date("2024-04-01"),
     updatedAt: new Date("2024-04-15"),
+    description: "Description de l'annonce",
     images: [
       {
-        image_id: 7,
-        image_url:
+        imageId: 7,
+        imageUrl:
           "https://images.unsplash.com/photo-1527030280862-64139fba04ca",
-        created_at: new Date("2024-04-01"),
-        updated_at: new Date("2024-04-01"),
+        createdAt: new Date("2024-04-01"),
+        updatedAt: new Date("2024-04-01"),
       },
       {
-        image_id: 8,
-        image_url:
+        imageId: 8,
+        imageUrl:
           "https://images.unsplash.com/photo-1510525009512-ad7fc13eefab",
-        created_at: new Date("2024-04-02"),
-        updated_at: new Date("2024-04-02"),
+        createdAt: new Date("2024-04-02"),
+        updatedAt: new Date("2024-04-02"),
       },
     ],
   },
@@ -304,20 +308,21 @@ export const dummyAnnonces: Annonce[] = [
     remain: 365,
     createdAt: new Date("2024-02-01"),
     updatedAt: new Date("2024-02-15"),
+    description: "Description de l'annonce",
     images: [
       {
-        image_id: 5,
-        image_url:
+        imageId: 5,
+        imageUrl:
           "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
-        created_at: new Date("2024-02-01"),
-        updated_at: new Date("2024-02-01"),
+        createdAt: new Date("2024-02-01"),
+        updatedAt: new Date("2024-02-01"),
       },
       {
-        image_id: 6,
-        image_url:
+        imageId: 6,
+        imageUrl:
           "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
-        created_at: new Date("2024-02-02"),
-        updated_at: new Date("2024-02-02"),
+        createdAt: new Date("2024-02-02"),
+        updatedAt: new Date("2024-02-02"),
       },
     ],
   },
