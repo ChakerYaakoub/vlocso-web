@@ -131,7 +131,11 @@ const Register: React.FC<RegisterProps> = (props) => {
                   label={textsInputsRegister.step1.password.label}
                   placeholder={textsInputsRegister.step1.password.placeholder}
                   id={textsInputsRegister.step1.password.id}
-                  type={textsInputsRegister.step1.password.type}
+                  type={
+                    showPassword
+                      ? textsInputsRegister.step1.password.type
+                      : "text"
+                  }
                   name={textsInputsRegister.step1.password.name}
                   required={textsInputsRegister.step1.password.required}
                   helperText={textsInputsRegister.step1.password.helperText}
@@ -163,7 +167,11 @@ const Register: React.FC<RegisterProps> = (props) => {
                     textsInputsRegister.step1.confirmPassword.placeholder
                   }
                   id={textsInputsRegister.step1.confirmPassword.id}
-                  type={textsInputsRegister.step1.confirmPassword.type}
+                  type={
+                    showConfirmPassword
+                      ? textsInputsRegister.step1.confirmPassword.type
+                      : "text"
+                  }
                   name={textsInputsRegister.step1.confirmPassword.name}
                   required={textsInputsRegister.step1.confirmPassword.required}
                   helperText={

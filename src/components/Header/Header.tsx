@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 // import { selectIsLoggedIn, selectUserData } from "../../reducers/userReducer";
 
 export const Header = (props: HeaderProps) => {
-  const { voitureNav, motoNav, notifications, messages, isLoggedIn } =
+  const { voitureNav, motoNav, notifications, messages, isLoggedIn, navigate } =
     useHeader(props);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const data = useSelector(selectUserData);
@@ -82,7 +82,9 @@ export const Header = (props: HeaderProps) => {
             {isLoggedIn && (
               <li className="max-lg:border-b max-lg:py-3 px-3 flex justify-center">
                 <button
-                  disabled
+                  onClick={() => {
+                    navigate("/mes-annonces/create-annonce");
+                  }}
                   type="button"
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
                 >

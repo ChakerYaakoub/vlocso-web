@@ -8,8 +8,16 @@ import { FaCar, FaMotorcycle } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 
 export const Home = (props: HomeProps) => {
-  const { carouselItems, marksMoto, marksVoiture, loading, error, data } =
-    useHome(props);
+  const {
+    carouselItems,
+    marksMoto,
+    marksVoiture,
+    loading,
+    error,
+    data,
+    navigate,
+    isLoggedIn,
+  } = useHome(props);
 
   if (loading || error) return null;
 
@@ -75,8 +83,21 @@ export const Home = (props: HomeProps) => {
           <p className="text-lg sm:text-3xl w-full mb-4 text-center">
             Vendez ou louez dès maintenant
           </p>
-          <button className="plusAnnonce flex justify-center items-center p-2 py-4">
-            Déposer une annonce <FaPlus size={25} className="ml-2" />
+          <button
+            onClick={() => {
+              isLoggedIn
+                ? navigate("/mes-annonces/create-annonce")
+                : navigate("/login");
+            }}
+            className="plusAnnonce flex justify-center items-center p-2 py-4"
+          >
+            {isLoggedIn ? (
+              <>
+                Déposer une annonce <FaPlus size={25} className="ml-2" />
+              </>
+            ) : (
+              <>Se connecter pour déposer une annonce</>
+            )}
           </button>
         </div>
       </section>

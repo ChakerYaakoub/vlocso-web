@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { textsInputsRegister } from "./textsInputsRegister";
 import { handleRegister } from "./handleRegister";
 import { User } from "../../models/User";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 
 export interface FormValues extends User {
@@ -72,8 +72,6 @@ export const useRegister = (props: RegisterProps) => {
   const [showPassword, setShowPassword] = useState(true);
   const [showConfirmPassword, setShowConfirmPassword] = useState(true);
   const dispatch = useDispatch();
-
-  const navigate = useNavigate();
 
   const toggleConfirmPasswordVisibility = () => {
     setShowConfirmPassword(!showConfirmPassword);
@@ -150,7 +148,7 @@ export const useRegister = (props: RegisterProps) => {
             setTimeout(() => {
               setSuccessMessage("");
 
-              navigate("/profil");
+              window.location.href = "/profil";
             }, 50);
           } else {
             // Set error message from the result

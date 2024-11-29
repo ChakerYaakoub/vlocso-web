@@ -102,6 +102,31 @@ export const logout = createAsyncThunk(
   }
 );
 
+// Async thunk for refreshing user data
+export const refreshUserData = createAsyncThunk<User | null, string>(
+  "user/refresh",
+  // @ts-ignore
+  async (userId, { rejectWithValue }) => {
+    const response = await fetch(API_ENDPOINTS.USER(userId), {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`, // Include token if needed
+      },
+    });
+
+    if (!response.ok) {
+      console.log("response ", response);
+      const errorData = await response.json();
+      return rejectWithValue(errorData);
+    }
+
+    const data: LoginRegister = await response.json();
+    console.log("data refresh user", data);
+    return data.data;
+  }
+);
+
 // Selector to check if user is logged in
 export const selectIsLoggedIn = (state: { user: { user: User | null } }) =>
   !!state.user.user;
@@ -142,6 +167,19 @@ const userSlice = createSlice({
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message ?? null;
+      })
+      .addCase(refreshUserData.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(refreshUserData.fulfilled, (state, action) => {
+        state.loading = false;
+        console.log("action payload", action.payload);
+        state.user = action.payload; // Update user data with refreshed data
+      })
+      .addCase(refreshUserData.rejected, (state, action) => {
+        state.loading = false;
+        console.log("action error", action.error);
         state.error = action.error.message ?? null;
       });
   },

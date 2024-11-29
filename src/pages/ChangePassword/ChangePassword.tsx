@@ -34,7 +34,7 @@ export const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
         title="Modification de votre mot de passe"
       />
       <FormCard>
-        <div className="mt-6">
+        <div className="mt-6 ">
           {errorChangePasswordMsg && (
             <div className="text-red-500 text-center text-xs md:text-sm  absolute top-2 md:top-4 left-0 right-0   ">
               {" "}
@@ -70,6 +70,7 @@ export const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
               placeholder={PasswordText.placeholder}
               required={PasswordText.required}
               name={PasswordText.name}
+              afterFocus={PasswordText.afterFocus}
               heightFormHelperText={2}
               helperText={PasswordText.helperText}
               errorText={formik.errors.password}
@@ -98,6 +99,7 @@ export const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
               size="medium"
               required={ConfirmPasswordText.required}
               name={ConfirmPasswordText.name}
+              afterFocus={ConfirmPasswordText.afterFocus}
               heightFormHelperText={2}
               helperText={ConfirmPasswordText.helperText}
               errorText={formik.errors.confirmPassword}
@@ -109,7 +111,6 @@ export const ChangePassword: React.FC<ChangePasswordProps> = (props) => {
                 Boolean(formik.errors.confirmPassword)
               }
             />
-
             <div className="text-center mt-4">
               {" "}
               {/* Fixed height for button container */}

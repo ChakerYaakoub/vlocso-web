@@ -2,10 +2,11 @@ import { FormValuesInformationsPersonnel } from "./useInformationsPersonnel";
 import { API_ENDPOINTS } from "../../../https"; // Import the endpoints
 
 export const handleUpdateInformationsPersonnel = async (
-  value: FormValuesInformationsPersonnel
+  value: FormValuesInformationsPersonnel,
+  id: string
 ) => {
   try {
-    const response = await fetch(API_ENDPOINTS.UPDATE_USER, {
+    const response = await fetch(API_ENDPOINTS.UPDATE_USER(id), {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

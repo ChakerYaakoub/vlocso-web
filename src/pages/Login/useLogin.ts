@@ -2,7 +2,7 @@ import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { textsInputsLogin } from "./textsInputsLogin";
-import { useNavigate } from "react-router-dom";
+
 import { handleLogin } from "./handleLogin";
 import { useDispatch } from "react-redux";
 
@@ -48,7 +48,6 @@ export const useLogin = (props: LoginProps) => {
     window.scrollTo(0, 0);
   }, []); // Add dependency on pathname
 
-  const navigate = useNavigate();
   // Formik configuration
   const formik: FormikProps<FormValues> = useFormik<FormValues>({
     initialValues: {
@@ -76,8 +75,8 @@ export const useLogin = (props: LoginProps) => {
         .then((result) => {
           console.log("result", result);
           if (result.success) {
-            formik.resetForm();
-            navigate("/profil");
+            // formik.resetForm();
+            window.location.href = "/profil";
           } else {
             // Set error message from the result
             setErrorLoginMsg(result.message); // Update error message

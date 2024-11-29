@@ -1,18 +1,22 @@
-import { FormValuesChangePasswordProfile } from "./useMotDePasse";
 import { API_ENDPOINTS } from "../../../https"; // Import the endpoints
 
 export const handleChangePasswordProfile = async (
-  values: FormValuesChangePasswordProfile
+  password: string,
+  userId: number
 ) => {
   try {
-    const response = await fetch(API_ENDPOINTS.CHANGE_PASSWORD_PROFILE, {
-      // Use the endpoint
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    });
+    const response = await fetch(
+      API_ENDPOINTS.CHANGE_PASSWORD_PROFILE(userId),
+      {
+        // Use the endpoint
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          // Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify({ password }),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Network response was not ok");

@@ -5,7 +5,10 @@ import { handleImage } from "./handleImage";
 import { useNavigate } from "react-router-dom";
 import { User } from "../../../models/User";
 import { useDispatch } from "react-redux";
-import { logout } from "../../../reducers/userReducer";
+import { logout, refreshUserData } from "../../../reducers/userReducer";
+import { useAlert } from "../../../context/AlertContext";
+import { AlertType } from "../../../models/Alert/AlertTypes";
+import { AlertVariant } from "../../../models/Alert/AlertTypes";
 
 export interface BordProps {
   user: User;
@@ -52,6 +55,7 @@ export const useBord = (props: BordProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [weHaveChanged, setWeHaveChanged] = useState(false);
   const dispatch = useDispatch();
+  const { showAlert } = useAlert();
   const formik: FormikProps<FormValuesBord> = useFormik<FormValuesBord>({
     initialValues: {
       urlImageUser: props.user.urlImageUser!,
@@ -63,16 +67,24 @@ export const useBord = (props: BordProps) => {
       console.log(values);
     },
   });
+
   // after change picture
   useEffect(() => {
     const updateImage = async () => {
       setIsLoading(true);
       console.log(formik.values);
       // TODO: send to backend
-      await handleImage(formik.values)
+      await handleImage(formik.values, props.user.userId)
         .then((response) => {
-          console.log(response);
-          setWeHaveChanged(true);
+          console.log("response image image", response);
+          showAlert({
+            message: "Image mise à jour avec succès",
+            title: "Succès",
+            type: AlertType.Success,
+            variant: AlertVariant.Standard,
+          });
+          // @ts-ignore
+          dispatch(refreshUserData(props.user.userId.toString()));
         })
         .catch((error) => {
           console.error("Error updating image:", error);

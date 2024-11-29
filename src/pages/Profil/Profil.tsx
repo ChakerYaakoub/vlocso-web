@@ -5,9 +5,10 @@ import Bord from "./Bord/Bord";
 import MotDePasse from "./MotDePasse/MotDePasse";
 import { MdDashboard, MdPerson, MdLock } from "react-icons/md";
 import InformationsPersonnel from "./InformationsPersonnel/InformationsPersonnel";
+import LoaderUpdate from "../../components/LoaderUpdate/LoaderUpdate";
 
 const Profil: React.FC<ProfilProps> = (props) => {
-  const { user, onLogout } = useProfil(props);
+  const { user, onLogout, loading } = useProfil(props);
   const [activeTab, setActiveTab] = useState("Bord");
 
   const renderContent = () => {
@@ -24,13 +25,23 @@ const Profil: React.FC<ProfilProps> = (props) => {
   };
 
   if (!user) {
-    return <div>Loading...</div>;
+    return null; // Add loader
   } else {
     return (
       <section className="section relative">
+        {loading && <LoaderUpdate />}
         <h1 className="text-2xl font-bold mb-4">Votre espace personnel</h1>
         <div className="flex flex-col lg:flex-row">
-          <div className="md:w-full lg:w-1/4 p-4 bg-gray-100 ">
+          <div className=" mb-4 md:mb-0 ">
+            <button
+              className="flex items-center justify-end gap-2 float-right p-2 m-2 borderBtn  block md:hidden"
+              onClick={onLogout}
+            >
+              Logout
+            </button>
+          </div>
+
+          <div className="md:w-full lg:w-1/4 p-4 bg-gray-100  ">
             <button
               className={`block w-full text-left p-2 mb-2 ${
                 activeTab === "Bord"
@@ -71,7 +82,7 @@ const Profil: React.FC<ProfilProps> = (props) => {
         </div>
 
         <button
-          className="flex items-center justify-end gap-2  p-2 m-2 borderBtn absolute top-4 right-0"
+          className="flex items-center justify-end gap-2  p-2 m-2 borderBtn absolute top-4 right-0 hidden md:block"
           onClick={onLogout}
         >
           Logout

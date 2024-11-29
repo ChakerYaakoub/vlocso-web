@@ -93,7 +93,7 @@ export const useMotDePasse = (props: MotDePasseProps) => {
       }
 
       setLoading(true);
-      handleChangePasswordProfile(formik.values)
+      handleChangePasswordProfile(formik.values.password, props.user.userId)
         .then((result) => {
           if (result.success) {
             formik.resetForm();
@@ -110,6 +110,10 @@ export const useMotDePasse = (props: MotDePasseProps) => {
         .finally(() => {
           setLoading(false);
           setConfirmSubmit(false);
+          setTimeout(() => {
+            setErrorChangePasswordMsg("");
+            setSuccessChangePasswordMsg("");
+          }, 3000);
         });
     }
   }, [confirmSubmit, formik.errors]);

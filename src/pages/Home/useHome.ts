@@ -6,12 +6,22 @@ import { useLoading } from "../../context/LoadingContext";
 import { useEffect, useState } from "react";
 import { AnnonceHome, DataAnnonce } from "../../models/Annonce";
 import { fetchHomeData } from "./fetchHomeData";
+import { useNavigate } from "react-router-dom";
 export interface HomeProps {}
 
 export const useHome = (props: HomeProps) => {
+  const navigate = useNavigate();
   const { setLoading, loading } = useLoading();
   const { setError, error } = useServerError();
   const [data, setData] = useState<DataAnnonce[]>([]);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const accessToken = localStorage.getItem("accessToken");
+    setIsLoggedIn(!!accessToken);
+    console.log("isLoggedIn", isLoggedIn);
+  }, [localStorage.getItem("accessToken"), isLoggedIn]);
 
   const carouselItems = [
     {
@@ -51,7 +61,15 @@ export const useHome = (props: HomeProps) => {
     if (!data || data.length === 0) {
       fetchData();
     }
-  }, [data]); // Add `annonce` to dependencie
+  }, [data]); // Add `annonce` to dependencies
+
+  // in unMount
+  useEffect(() => {
+    return () => {
+      setLoading(false);
+      setError("");
+    };
+  }, []);
 
   return {
     ...props,
@@ -62,5 +80,7 @@ export const useHome = (props: HomeProps) => {
     loading,
     error,
     setError,
+    navigate,
+    isLoggedIn,
   };
 };

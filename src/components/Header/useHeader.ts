@@ -5,12 +5,14 @@ import { useSelector } from "react-redux";
 import { Notification } from "../../models/Notification";
 import { Message } from "../../models/Message";
 import { fetchMessageById } from "../../services/MessageServices";
+import { useNavigate } from "react-router-dom";
 
 export interface HeaderProps {
   isLoggedIn: boolean;
 }
 
 export const useHeader = (props: HeaderProps) => {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [messages, setMessages] = useState<Message[]>([]);
   const voitureNav = {
@@ -55,5 +57,6 @@ export const useHeader = (props: HeaderProps) => {
     motoNav,
     notifications,
     messages,
+    navigate,
   };
 };

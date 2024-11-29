@@ -24,16 +24,16 @@ const MotDePasse: React.FC<MotDePasseProps> = (props) => {
     toggleConfirmPasswordVisibility,
   } = useMotDePasse(props);
   return (
-    <div className="m-3 md:m-7">
+    <div className="m-3 md:m-7 relative">
       {errorChangePasswordMsg && (
-        <div className="text-red-500 text-center text-xs md:text-sm  absolute top-2 md:top-4 left-0 right-0   ">
+        <div className="text-red-500 text-center text-xs md:text-sm   top-2 md:top-4 left-0 right-0   ">
           {" "}
           {/* Fixed height for error message */}
           {errorChangePasswordMsg}
         </div>
       )}
       {successChangePasswordMsg && (
-        <div className="text-green-500 text-center text-xs md:text-sm  absolute top-2 md:top-4 left-0 right-0   ">
+        <div className="text-green-500 text-center text-xs md:text-sm   top-2 md:top-4 left-0 right-0   ">
           {" "}
           {/* Fixed height for error message */}
           {successChangePasswordMsg}

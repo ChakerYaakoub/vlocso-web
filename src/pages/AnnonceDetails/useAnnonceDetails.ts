@@ -89,6 +89,14 @@ export const useAnnonceDetails = (props: AnnonceDetailsProps) => {
     }
   }, [annonce]);
 
+  // in unMount
+  useEffect(() => {
+    return () => {
+      setLoading(false);
+      setError("");
+    };
+  }, []);
+
   return {
     ...props,
     annonce,

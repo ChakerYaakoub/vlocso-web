@@ -198,6 +198,9 @@ const UploadImageVideo: React.FC<UploadImageVideoProps> = (props) => {
                       </div>
                     </div>
                   </div>
+                  <h5 className="mb-2  mt-4 text-xl font-bold tracking-tight text-gray-700">
+                    {titleBottom ?? ""}
+                  </h5>
                 </>
               ) : (
                 // @ts-ignore

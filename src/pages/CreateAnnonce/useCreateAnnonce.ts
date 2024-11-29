@@ -17,7 +17,7 @@ const validationSchemaStep1 = Yup.object({
   title: Yup.string()
     .required("Le titre est requis")
     .min(2, "Le titre doit comporter au moins 2 caractères")
-    .max(30, "Le titre doit comporter au maximum 30 caractères"),
+    .max(50, "Le titre doit comporter au maximum 50 caractères"),
   price: Yup.string()
     .required("Le prix est requis")
     .matches(
@@ -312,6 +312,7 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
           if (result.success && result.data) {
             formik.resetForm();
             setSuccessMessage(result.message);
+            console.log("result.data", result);
             setTimeout(() => {
               setSuccessMessage("");
               showAlert({
@@ -320,8 +321,8 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
                 type: AlertType.Success,
                 variant: AlertVariant.Standard,
               });
-
-              navigate(`/annonce-details/${result.data.annonceId}`);
+              // @ts-ignore
+              navigate(`/annonce-details/${result.data.annonce.annonceId}`);
             }, 50);
           } else {
             // Set error message from the result
@@ -333,6 +334,12 @@ export const useCreateAnnonce = (props: CreateAnnonceProps) => {
           }
         })
         .catch((error) => {
+          showAlert({
+            message: error.message,
+            title: "Erreur",
+            type: AlertType.Error,
+            variant: AlertVariant.Standard,
+          });
           // Handle unexpected errors
           setErrorRegisterMsg(error.message); // Update error message
           // Clear error message after 5 seconds

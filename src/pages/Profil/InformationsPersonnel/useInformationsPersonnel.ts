@@ -2,8 +2,9 @@ import { User } from "../../../models/User";
 import { FormikProps, useFormik } from "formik";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { handleUpdateInformationsPersonnel } from "./handleUpdateInformationsPersonnel";
+import { refreshUserData } from "../../../reducers/userReducer";
+import { useDispatch } from "react-redux";
 
 export interface InformationsPersonnelProps {
   user: User;
@@ -15,6 +16,7 @@ export interface FormValuesInformationsPersonnel {
   birthDate: string;
   phoneNumber: string;
   city: string;
+  urlImageUser: string;
 }
 
 const validationSchemaInformationsPersonnel = Yup.object({
@@ -55,8 +57,8 @@ export const useInformationsPersonnel = (props: InformationsPersonnelProps) => {
   const [confirmSubmit, setConfirmSubmit] = useState(false);
   const [loading, setLoading] = useState(false);
   const [dataIsUpdated, setDataIsUpdated] = useState(false);
-  const navigate = useNavigate();
 
+  const dispatch = useDispatch();
   const formik: FormikProps<FormValuesInformationsPersonnel> =
     useFormik<FormValuesInformationsPersonnel>({
       initialValues: {
@@ -65,7 +67,12 @@ export const useInformationsPersonnel = (props: InformationsPersonnelProps) => {
         lastName: props.user.lastName,
         phoneNumber: props.user.phoneNumber,
         city: props.user.city || "",
-        birthDate: props.user.birthDate || "",
+        urlImageUser: props.user.urlImageUser || "",
+        birthDate: props.user.birthDate
+          ? `${props.user.birthDate.split("-")[2]}/${
+              props.user.birthDate.split("-")[1]
+            }/${props.user.birthDate.split("-")[0]}`
+          : "",
       },
       validationSchema: validationSchemaInformationsPersonnel,
 
@@ -103,16 +110,24 @@ export const useInformationsPersonnel = (props: InformationsPersonnelProps) => {
       dataIsUpdated
     ) {
       setLoading(true);
-      handleUpdateInformationsPersonnel(formik.values)
+      handleUpdateInformationsPersonnel(
+        formik.values,
+        props.user.userId.toString()
+      )
         .then((result) => {
           if (result.success) {
-            formik.resetForm();
+            console.log("props user", props.user.userId);
+            // formik.resetForm();
+            console.log("result update user", result);
+            // @ts-ignore
+
+            dispatch(refreshUserData(props.user.userId));
             setSuccessMessage(result.message);
             setDataIsUpdated(false);
             setTimeout(() => {
               setSuccessMessage("");
 
-              navigate("/profile");
+              // navigate("/profile");
             }, 2000);
           } else {
             // Set error message from the result
