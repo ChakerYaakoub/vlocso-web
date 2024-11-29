@@ -87,7 +87,11 @@ const Register: React.FC<RegisterProps> = (props) => {
           </CustomButton>
         </div>
         <div className="mt-6">
-          <form onSubmit={formik.handleSubmit} id="register-form">
+          <form
+            onSubmit={formik.handleSubmit}
+            id="register-form"
+            className=" grid grid-cols-1  gap-4"
+          >
             <h2 className="pb-2 font-bold">
               {step === 1
                 ? "Step 1: Account Information : "
